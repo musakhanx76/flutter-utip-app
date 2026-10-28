@@ -41,25 +41,56 @@ class _UTipState extends State<UTip> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            padding: const EdgeInsets.all(30),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.inversePrimary,
-              borderRadius: BorderRadius.circular(10),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.inversePrimary,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  Text('Total per person',
+                  style: style,),
+                  Text('\$23.48',
+                  style: style.copyWith(
+                    color: theme.colorScheme.onPrimary,
+                    fontSize: theme.textTheme.displayMedium!.fontSize
+                  ),)
+                ],
+              ),  
             ),
-            child: Column(
-              children: [
-                Text('Total per person',
-                style: style,),
-                Text('\$23.48',
-                style: style.copyWith(
-                  color: theme.colorScheme.onPrimary,
-                  fontSize: theme.textTheme.displayMedium!.fontSize
-                ),)
-              ],
-            ),  
           ),
+          //form
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                  color: theme.colorScheme.primary,
+                  width: 2
+                )
+              ),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration:const InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.attach_money),
+                      labelText: 'Bill Amount',
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      print("Value: $value");
+                    },
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
