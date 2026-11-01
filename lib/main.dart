@@ -28,6 +28,21 @@ class UTip extends StatefulWidget {
 }
 
 class _UTipState extends State<UTip> {
+  // personcounter variable
+   int  _personcounter = 1;
+//methods 
+void decrement(){
+ setState(() {
+  if (_personcounter > 0)
+   _personcounter--;
+ });
+}
+void increment(){
+ setState(() {
+   _personcounter = _personcounter + 1;
+ });
+}
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -74,6 +89,7 @@ class _UTipState extends State<UTip> {
                   width: 2
                 )
               ),
+              //input bar
               child: Column(
                 children: [
                   TextField(
@@ -86,6 +102,25 @@ class _UTipState extends State<UTip> {
                     onChanged: (String value) {
                       print("Value: $value");
                     },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Split',
+                      style: theme.textTheme.titleMedium),
+                      Row(
+                        children:[
+                          IconButton(
+                            color: theme.colorScheme.primary,
+                            onPressed: decrement, icon: const Icon(Icons.remove)),
+                          Text('$_personcounter',
+                          style: theme.textTheme.titleMedium),
+                          IconButton(
+                            color: theme.colorScheme.primary,
+                            onPressed: increment, icon: const Icon(Icons.add)),
+                        ]
+                      )
+                    ],
                   )
                 ],
               ),
